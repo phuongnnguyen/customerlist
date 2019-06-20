@@ -41,7 +41,7 @@ router.post('/update/:id', (req, res) => {
     })
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.get('/delete/:id', (req, res) => {
     Customer.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
         if(!err)
             console.log('DELETED');
