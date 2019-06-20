@@ -19,7 +19,6 @@ router.post('/customers', (req, res) => {
     customer.save().then(() => console.log('SAVED'));
 })
 router.put('/customers/:id', (req, res) => {
-    res.send('UPDATE api')
     const {
         _address, _day, _name, _notes, _phoneNo, 
         _requirement, _source, _potential,  
@@ -39,13 +38,14 @@ router.put('/customers/:id', (req, res) => {
         if(!err)
             console.log("UPDATED")
     })
+    res.send('UPDATE api')
 })
 
 router.delete('/customers/:id', (req, res) => {
-    res.send('DELETE api');
     Customer.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
         if(!err)
             console.log('DELETED');
     })
+    res.send('DELETE api');
 })
 module.exports = router;
