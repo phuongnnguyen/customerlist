@@ -43,7 +43,8 @@ router.put('/customers/:id', (req, res) => {
 })
 
 router.delete('/customers/:id', (req, res) => {
-    Customer.remove({_id: req.params.id}, (err, doc) => {
+    console.log(req.params.id)
+    Customer.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
         if(!err)
             console.log('DELETED');
     })

@@ -27,8 +27,8 @@ app.use(function(req, res, next) {
 
 
 // routes
-app.get('/', (req, res) => res.send('MAIN'))
 app.use('/', require('./routes/customers'));
+app.get('/', (req, res) => res.send('MAIN'))
 
 console.clear();
 app.listen(port, () => console.log('server is running at ' + port));
