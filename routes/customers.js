@@ -18,12 +18,12 @@ router.post('/customers', (req, res) => {
     });
     customer.save().then(() => console.log('SAVED'));
 })
-router.post('/update/:id', (req, res) => {
+router.put('/customers/:id', (req, res) => {
+    res.send('UPDATE api')
     const {
         _address, _day, _name, _notes, _phoneNo, 
         _requirement, _source, _potential,  
     } = req.body
-    console.log(_address)
     Customer.findByIdAndUpdate({_id: req.params.id}, {
         $set: {
             name: _name,
@@ -41,7 +41,8 @@ router.post('/update/:id', (req, res) => {
     })
 })
 
-router.post('/delete/:id', (req, res) => {
+router.delete('/customers/:id', (req, res) => {
+    res.send('DELETE api');
     Customer.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
         if(!err)
             console.log('DELETED');
