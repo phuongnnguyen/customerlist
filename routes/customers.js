@@ -23,7 +23,7 @@ router.put('/customers/:id', (req, res) => {
         _address, _day, _name, _notes, _phoneNo, 
         _requirement, _source, _potential,  
     } = req.body
-    Customer.findByIdAndUpdate({_id: req.params.id}, {
+    Customer.findOneAndUpdate({_id: req.params.id}, {
         $set: {
             name: _name,
             phoneNo: _phoneNo,
@@ -34,7 +34,8 @@ router.put('/customers/:id', (req, res) => {
             potential: _potential,
             notes: _notes
         },
-    }, (err, doc) => {
+    }, { upset: true }, 
+    (err, doc) => {
         if(!err)
             console.log("UPDATED")
     })
@@ -42,7 +43,7 @@ router.put('/customers/:id', (req, res) => {
 })
 
 router.delete('/customers/:id', (req, res) => {
-    Customer.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
+    Customer.findOneAndDelete({_id: req.params.id}, (err, doc) => {
         if(!err)
             console.log('DELETED');
     })
