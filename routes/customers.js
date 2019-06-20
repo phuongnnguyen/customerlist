@@ -18,7 +18,7 @@ router.post('/customers', (req, res) => {
     });
     customer.save().then(() => console.log('SAVED'));
 })
-router.put('/customers/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     const {
         _address, _day, _name, _notes, _phoneNo, 
         _requirement, _source, _potential,  
@@ -41,7 +41,7 @@ router.put('/customers/:id', (req, res) => {
     })
 })
 
-router.delete('/customers/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
     Customer.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
         if(!err)
             console.log('DELETED');
