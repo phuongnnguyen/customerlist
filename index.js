@@ -9,7 +9,6 @@ const port = process.env.PORT || 4000;
 // database
 mongoose.connect('mongodb+srv://phuongnguyen952501:PAcnxcRmniPN25@songsingerapi-hhtzl.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser:true});
 mongoose.connection.once('open', () => console.log('DB connected'))
-mongoose.set('useFindAndModify', false);
 mongoose.promise = global.Promise;
 
 // config
